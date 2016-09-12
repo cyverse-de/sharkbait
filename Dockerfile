@@ -1,12 +1,21 @@
-FROM discoenv/javabase
+FROM clojure:alpine
+
+RUN apk add --update git && \
+    rm -rf /var/cache/apk
 
 ARG git_commit=unknown
-ARG buildenv_git_commit=unknown
 ARG version=unknown
 LABEL org.iplantc.de.sharkbait.git-ref="$git_commit" \
-      org.iplantc.de.sharkbait.version="$version" \
-      org.iplantc.de.buildenv.git-ref="$buildenv_git_commit"
+      org.iplantc.de.sharkbait.version="$version"
 
-COPY target/sharkbait-standalone.jar /iplant/home/
+COPY . /usr/src/app
 
-ENTRYPOINT ["java", "-jar", "/iplant/home/sharkbait-standalone.jar"]
+WORKDIR /usr/src/app
+
+RUN lein uberjar && \
+    cp target/sharkbait-standalone.jar .
+
+RUN ln -s "/usr/bin/java" "/bin/sharkbait"
+
+ENTRYPOINT ["sharkbait", "-jar", "sharkbait-standalone.jar"]
+CMD ["--help"]
