@@ -14,6 +14,7 @@
             :url "http://iplantcollaborative.org/sites/default/files/iPLANT-LICENSE.txt"}
   :manifest {"Git-Ref" ~(git-ref)}
   :uberjar-name "sharkbait-standalone.jar"
+  :plugins [[test2junit "1.2.2"]]
   :dependencies [[edu.internet2.middleware.grouper/grouper "2.2.1"]
                  [honeysql "0.6.2"]
                  [korma "0.4.2"]
