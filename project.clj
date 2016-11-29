@@ -24,7 +24,7 @@
                  [org.hibernate/hibernate-core "3.6.10.Final"]
                  [org.hibernate/hibernate-ehcache "3.6.10.Final"]
                  [org.cyverse/common-cli "2.8.0"]
-                 [org.cyverse/kameleon "2.8.0"]
+                 [org.cyverse/kameleon "3.0.0"]
                  [postgresql "9.3-1102.jdbc41"]]
   :main sharkbait.core
   :profiles {:uberjar {:aot :all}})
