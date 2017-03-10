@@ -22,7 +22,7 @@
   :uberjar-name "sharkbait-standalone.jar"
   :plugins [[jonase/eastwood "0.2.3"]
             [test2junit "1.2.2"]]
-  :dependencies [[edu.internet2.middleware.grouper/grouper "2.2.1"]
+  :dependencies [[edu.internet2.middleware.grouper/grouper "2.2.2"]
                  [honeysql "0.6.2"]
                  [korma "0.4.2"]
                  [net.sf.ehcache/ehcache "2.10.1"]
