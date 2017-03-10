@@ -14,7 +14,8 @@
             :url "http://iplantcollaborative.org/sites/default/files/iPLANT-LICENSE.txt"}
   :manifest {"Git-Ref" ~(git-ref)}
   :uberjar-name "sharkbait-standalone.jar"
-  :plugins [[test2junit "1.2.2"]]
+  :plugins [[jonase/eastwood "0.2.3"]
+            [test2junit "1.2.2"]]
   :dependencies [[edu.internet2.middleware.grouper/grouper "2.2.1"]
                  [honeysql "0.6.2"]
                  [korma "0.4.2"]
@@ -27,4 +28,5 @@
                  [org.cyverse/kameleon "3.0.0"]
                  [postgresql "9.3-1102.jdbc41"]]
   :main sharkbait.core
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:dev {:resource-paths ["test-resources"]}
+             :uberjar {:aot :all}})
