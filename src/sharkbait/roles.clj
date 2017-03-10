@@ -17,20 +17,3 @@
   "Replaces the members of a role."
   [role subjects]
   (.replaceMembers role subjects))
-
-(defn find-role
-  "Finds a Grouper role."
-  [session role-name]
-  (GroupFinder/findByName session role-name true))
-
-(defn find-effective-membership
-  "Finds an effective membership in a role."
-  [session role subject]
-  (-> (MembershipFinder.)
-      (.addSubject subject)
-      (.assignCheckSecurity true)
-      (.assignEnabled true)
-      (.assignHasFieldForStem true)
-      (.assignHasMembershipTypeForStem true)
-      (.assignSplitScopeForStem true)
-      (.findMembershipsMembers)))
