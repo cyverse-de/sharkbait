@@ -5,6 +5,7 @@
             [common-cli.core :as cli]
             [sharkbait.db :as db]
             [sharkbait.folders :as folders]
+            [sharkbait.loader :as loader]
             [sharkbait.sessions :as sessions]
             [sharkbait.subjects :as subjects]
             [sharkbait.users :as users]))
@@ -30,6 +31,7 @@
   [folder-names de-grouper-user]
   (let [session (sessions/create-grouper-session)]
     (try
+      (loader/create-loader-group session folder-names)
       (-> (folders/find-folder session (:de folder-names))
           (folders/grant-privs (subjects/find-subject de-grouper-user true) #{:stem}))
       (finally (sessions/stop-grouper-session session)))))
