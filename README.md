@@ -40,22 +40,30 @@ Grouper's subject source.
 ## Purpose
 
 The purpose of this utility is to initialize Grouper for use with the Discovery Environment. At this time, sharkbait
-adds several initial folders to Grouper and creates some permission definitions.
+performs the following tasks:
+
+* adds several initial folders
+* creates a group containing all DE users
+* configures Grouper so that it loads groups from LDAP.
 
 Folders:
 
-* iplant:de:analyses
-* iplant:de:apps
-* iplant:de:users
+* `iplant:de:<environment-name>`
+* `iplant:de:<environment-name>:users`
+* `iplant:ldap`
 
-Permission Definitions:
+Groups:
 
-* iplant:de:analyses:analysisPermissionDef
-* iplant:de:apps:appPermissionDef
+* `iplant:de:<environment-name>:users:de-users`
+* `iplant:ldap:ldap-group-loader`
+
+Group Loader:
+
+* The group loader is defined by adding several attributes to the `ldap-group-loader` group.
 
 This utility is designed to be idempotent so that it can be run multiple times on the same Grouper deployment without
 doing any damage or encountering an error.
 
 ## License
 
-http://iplantcollaborative.org/sites/default/files/iPLANT-LICENSE.txt
+http://www.cyverse.org/sites/default/files/iPLANT-LICENSE.txt
