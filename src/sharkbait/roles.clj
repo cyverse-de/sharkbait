@@ -4,33 +4,26 @@
            [edu.internet2.middleware.grouper.membership MembershipType]
            [edu.internet2.middleware.grouper.misc SaveMode]))
 
+(defn- create-group*
+  "Creates a group or role."
+  [session folder group-name group-type]
+  (-> (GroupSave. session)
+      (.assignName (str folder ":" group-name))
+      (.assignTypeOfGroup group-type)
+      (.assignSaveMode SaveMode/INSERT_OR_UPDATE)
+      (.save)))
+
+(defn create-group
+  "Creates a group."
+  [session folder group-name]
+  (create-group* session folder group-name TypeOfGroup/group))
+
 (defn create-role
   "Creates a Grouper role."
   [session folder role-name]
-  (-> (GroupSave. session)
-      (.assignName (str folder ":" role-name))
-      (.assignTypeOfGroup TypeOfGroup/role)
-      (.assignSaveMode SaveMode/INSERT_OR_UPDATE)
-      (.save)))
+  (create-group* session folder role-name TypeOfGroup/role))
 
 (defn replace-members
   "Replaces the members of a role."
   [role subjects]
   (.replaceMembers role subjects))
-
-(defn find-role
-  "Finds a Grouper role."
-  [session role-name]
-  (GroupFinder/findByName session role-name true))
-
-(defn find-effective-membership
-  "Finds an effective membership in a role."
-  [session role subject]
-  (-> (MembershipFinder.)
-      (.addSubject subject)
-      (.assignCheckSecurity true)
-      (.assignEnabled true)
-      (.assignHasFieldForStem true)
-      (.assignHasMembershipTypeForStem true)
-      (.assignSplitScopeForStem true)
-      (.findMembershipsMembers)))

@@ -1,9 +1,6 @@
 (ns sharkbait.users
-  (:require [clojure.string :as string]
-            [sharkbait.consts :as consts]
-            [sharkbait.db :as db]
-            [sharkbait.roles :as roles]
-            [sharkbait.subjects :as subjects]))
+  (:require [sharkbait.consts :as consts]
+            [sharkbait.roles :as roles]))
 
 (defn register-de-users
   [session de-users-folder subjects]
