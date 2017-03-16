@@ -16,7 +16,7 @@
   [folder-names]
   {(LoaderLdapUtils/grouperLoaderLdapTypeName)                "LDAP_GROUP_LIST"
    (LoaderLdapUtils/grouperLoaderLdapFilterName)              "objectClass=posixGroup"
-   (LoaderLdapUtils/grouperLoaderLdapQuartzCronName)          "* * * 1 * * *"
+   (LoaderLdapUtils/grouperLoaderLdapQuartzCronName)          "0 0 * * * ?"
    (LoaderLdapUtils/grouperLoaderLdapSearchDnName)            "ou=groups"
    (LoaderLdapUtils/grouperLoaderLdapServerIdName)            "groupSource"
    (LoaderLdapUtils/grouperLoaderLdapSourceIdName)            "ldap"
