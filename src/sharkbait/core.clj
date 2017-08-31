@@ -18,10 +18,10 @@
 
 (def cli-options
   [["-?" "--help" "Show help." :default false]
-   ["-h" "--host HOST" "The database hostname." :default "localhost"]
-   ["-p" "--port PORT" "The database port number." :default 5432 :parse-fn #(Integer/parseInt %)]
-   ["-d" "--database DATABASE" "The database name." :default "de"]
-   ["-U" "--user USER" "The database username." :default "de"]
+   ["-h" "--host HOST" "The DE database hostname." :default "localhost"]
+   ["-p" "--port PORT" "The DE database port number." :default 5432 :parse-fn #(Integer/parseInt %)]
+   ["-d" "--database DATABASE" "The DE database name." :default "de"]
+   ["-U" "--user USER" "The DE database username." :default "de"]
    ["-v" "--version" "Show the sharkbait version." :default false]
    ["-e" "--environment ENVIRONMENT" "The name of the DE environment." :default "dev"]
    ["-u" "--grouper-user USER" "The username that the DE uses to authenticate to Grouper" :default "de_grouper"]])
