@@ -3,12 +3,12 @@ FROM discoenv/grouper:2.3.0-clojure
 RUN apk add --update git && \
     rm -rf /var/cache/apk
 
-WORKDIR /usr/src/app/sharkbait
+WORKDIR /usr/src/app/
 
-COPY project.clj /usr/src/app/sharkbait/
+COPY project.clj /usr/src/app/
 RUN lein deps
 
-COPY . /usr/src/app/sharkbait
+COPY . /usr/src/app
 
 RUN lein uberjar && \
     cp target/sharkbait-standalone.jar .
