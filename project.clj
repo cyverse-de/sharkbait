@@ -20,9 +20,10 @@
             :url "http://iplantcollaborative.org/sites/default/files/iPLANT-LICENSE.txt"}
   :manifest {"Git-Ref" ~(git-ref)}
   :uberjar-name "sharkbait-standalone.jar"
-  :plugins [[lein-ancient "0.7.0" :exclusions [org.clojure/clojure]]
-            [jonase/eastwood "0.9.9" :exclusions [org.clojure/clojure]]
-            [test2junit "1.4.2" :exclusions [org.clojure/clojure]]]
+  :plugins [[lein-ancient "0.7.0"]
+            [lein-cljfmt "0.8.0"]
+            [jonase/eastwood "0.9.9"]
+            [test2junit "1.4.2"]]
   :dependencies [[edu.internet2.middleware.grouper/grouper "2.5.29"
                   :exclusions [javax.transaction/jta
                                org.wso2.charon/org.wso2.charon.core

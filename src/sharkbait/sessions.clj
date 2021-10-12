@@ -5,9 +5,9 @@
 (defn create-grouper-session
   "Creates a Grouper session. If no subject ID is specified then a root session is created."
   ([]
-     (GrouperSession/start (subjects/find-root-subject)))
+   (GrouperSession/start (subjects/find-root-subject)))
   ([subject-id]
-     (GrouperSession/start (subjects/find-subject subject-id true))))
+   (GrouperSession/start (subjects/find-subject subject-id true))))
 
 (defn stop-grouper-session
   "Stops a Grouper session."
