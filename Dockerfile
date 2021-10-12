@@ -1,14 +1,13 @@
-FROM discoenv/grouper:2.3.0-clojure
+FROM clojure:openjdk-17-lein-alpine
 
 RUN apk add --update git && \
     rm -rf /var/cache/apk
 
 WORKDIR /usr/src/app/
 
-COPY project.clj /usr/src/app/
-RUN lein deps
-
 COPY . /usr/src/app
+
+RUN lein do clean, deps
 
 RUN lein uberjar && \
     cp target/sharkbait-standalone.jar .
