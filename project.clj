@@ -20,20 +20,21 @@
             :url "http://iplantcollaborative.org/sites/default/files/iPLANT-LICENSE.txt"}
   :manifest {"Git-Ref" ~(git-ref)}
   :uberjar-name "sharkbait-standalone.jar"
-  :plugins [[jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
-            [test2junit "1.2.2" :exclusions [org.clojure/clojure]]]
-  :dependencies [[edu.internet2.middleware.grouper/grouper "2.3.0"
+  :plugins [[lein-ancient "0.7.0" :exclusions [org.clojure/clojure]]
+            [jonase/eastwood "0.9.9" :exclusions [org.clojure/clojure]]
+            [test2junit "1.4.2" :exclusions [org.clojure/clojure]]]
+  :dependencies [[edu.internet2.middleware.grouper/grouper "2.5.29"
                   :exclusions [javax.transaction/jta
                                org.wso2.charon/org.wso2.charon.core
                                org.wso2.charon/org.wso2.charon.samples]]
                  [javax.transaction/jta "1.1"]
-                 [honeysql "0.6.2"]
-                 [korma "0.4.2"]
-                 [net.sf.ehcache/ehcache "2.10.1"]
-                 [org.clojure/clojure "1.8.0"]
-                 [org.clojure/tools.logging "0.3.1"]
+                 [honeysql "1.0.461"]
+                 [korma "0.4.3"]
+                 [net.sf.ehcache/ehcache "2.10.9.2"]
+                 [org.clojure/clojure "1.10.3"]
+                 [org.clojure/tools.logging "1.1.0"]
                  [org.cyverse/common-cli "2.8.1"]
-                 [org.cyverse/kameleon "3.0.0"]
+                 [org.cyverse/kameleon "3.0.6"]
                  [postgresql "9.3-1102.jdbc41"]]
   :main sharkbait.core
   :profiles {:eastwood {:resource-paths ["test-resources"]}

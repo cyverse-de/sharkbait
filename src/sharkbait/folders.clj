@@ -1,7 +1,8 @@
 (ns sharkbait.folders
   (:require [sharkbait.consts :as consts])
   (:import [edu.internet2.middleware.grouper Stem StemFinder]
-           [edu.internet2.middleware.grouper.misc SaveMode]))
+           [edu.internet2.middleware.grouper.misc SaveMode]
+           [edu.internet2.middleware.subject Subject]))
 
 (def valid-privs #{:stem :create :attr-read :attr-update})
 
@@ -21,7 +22,7 @@
    to add. The set of valid keywords is stored in the variable, valid-privs."
   [folder subject privs & [{:keys [revoke-unselected?] :or {revoke-unselected? false}}]]
   (let [privs (set privs)]
-    (.grantPrivs folder subject
+    (.grantPrivs ^Stem folder ^Subject subject
                  (contains? privs :stem)
                  (contains? privs :create)
                  (contains? privs :attr-read)

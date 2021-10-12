@@ -1,5 +1,5 @@
 (ns sharkbait.roles
-  (:import [edu.internet2.middleware.grouper FieldType GroupFinder GroupSave MembershipFinder]
+  (:import [edu.internet2.middleware.grouper FieldType Group GroupFinder GroupSave MembershipFinder]
            [edu.internet2.middleware.grouper.group TypeOfGroup]
            [edu.internet2.middleware.grouper.membership MembershipType]
            [edu.internet2.middleware.grouper.misc SaveMode]))
@@ -26,4 +26,4 @@
 (defn replace-members
   "Replaces the members of a role."
   [role subjects]
-  (.replaceMembers role subjects))
+  (.replaceMembers ^Group role subjects))
