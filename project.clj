@@ -30,7 +30,6 @@
                  [javax.transaction/jta "1.1"]
                  [honeysql "1.0.461"]
                  [korma "0.4.3"]
-                 [net.sf.ehcache/ehcache "2.10.9.2"]
                  [org.clojure/clojure "1.10.3"]
                  [org.clojure/tools.logging "1.1.0"]
                  [org.cyverse/common-cli "2.8.1"]
