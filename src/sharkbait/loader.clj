@@ -4,12 +4,12 @@
             [sharkbait.roles :as roles])
   (:import [edu.internet2.middleware.grouper Group]
            [edu.internet2.middleware.grouper.app.loader.ldap LoaderLdapUtils]
-           [edu.internet2.middleware.grouper.attr.assign AttributeAssignGroupDelegate]
+           [edu.internet2.middleware.grouper.attr.assign AttributeAssign AttributeAssignGroupDelegate]
            [edu.internet2.middleware.grouper.attr.value AttributeValueDelegate]))
 
 (defn- assign-loader-attribute-def
   "Assigns the loader attribute definition to a group."
-  [^Group group]
+  ^AttributeAssign [^Group group]
   (let [^AttributeAssignGroupDelegate delegate (.getAttributeDelegate group)]
     (.assignAttribute delegate (LoaderLdapUtils/grouperLoaderLdapAttributeDefName))
     (.retrieveAssignment delegate nil (LoaderLdapUtils/grouperLoaderLdapAttributeDefName) false true)))
@@ -36,6 +36,6 @@
   [session {ldap-names :ldap :as folder-names}]
   (folders/find-folder session ldap-names)
   (let [^Group group                     (roles/create-group session ldap-names consts/ldap-loader-group-name)
-        ^AttributeValueDelegate delegate (.getAttributeValueDelegate ^Group (assign-loader-attribute-def group))]
+        ^AttributeValueDelegate delegate (.getAttributeValueDelegate (assign-loader-attribute-def group))]
     (doseq [[k v] (attribute-values folder-names)]
       (.assignValue delegate k v))))
