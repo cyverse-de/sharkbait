@@ -1,16 +1,13 @@
 (ns sharkbait.subjects
   (:require [clojure.string :as string])
-  (:import [edu.internet2.middleware.grouper SubjectFinder]))
+  (:import [edu.internet2.middleware.grouper SubjectFinder]
+           [edu.internet2.middleware.subject Subject]))
 
 (def find-subject
   "Finds a subject with the given ID. This function is memoized because it appears that searching
   for a subject more than once can cause null pointer exceptions."
-  (memoize (fn [subject-id required?] (SubjectFinder/findByIdentifier subject-id required?))))
-
-(def find-root-subject
-  "Returns the root subject. This function is memoized for efficiency, since the root subject won't
-  change during a session."
-  (memoize (fn [] (SubjectFinder/findRootSubject))))
+  (memoize (fn [subject-id required?]
+             (SubjectFinder/findByIdentifier ^String subject-id ^Boolean required?))))
 
 (defn find-subjects
   "Finds all subjects with usernames in the given list of usernames. This function produces some false
@@ -19,5 +16,5 @@
   set. "
   [ids]
   (let [id-set (set ids)]
-    (filter #(contains? id-set (.getId %))
-            (SubjectFinder/findAll (string/join "," ids)))))
+    (filter #(contains? id-set (.getId ^Subject %))
+            (SubjectFinder/findAll ^String (string/join "," ids)))))
