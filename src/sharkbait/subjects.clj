@@ -9,11 +9,6 @@
   (memoize (fn [subject-id required?]
              (SubjectFinder/findByIdentifier ^String subject-id ^Boolean required?))))
 
-(def find-root-subject
-  "Returns the root subject. This function is memoized for efficiency, since the root subject won't
-  change during a session."
-  (memoize (fn [] (SubjectFinder/findRootSubject))))
-
 (defn find-subjects
   "Finds all subjects with usernames in the given list of usernames. This function produces some false
   positives, but it was far more efficient than calling searchByIdentifier for each identifier separately
