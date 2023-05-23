@@ -1,4 +1,4 @@
-FROM discoenv/grouper:2.5.29
+FROM discoenv/grouper:2.5.68
 
 RUN yum makecache fast && \
     yum install -y git && \
