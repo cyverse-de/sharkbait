@@ -24,18 +24,17 @@
             [lein-cljfmt "0.8.0"]
             [jonase/eastwood "0.9.9"]
             [test2junit "1.4.2"]]
-  :dependencies [[edu.internet2.middleware.grouper/grouper "2.5.29"
+  :dependencies [[edu.internet2.middleware.grouper/grouper "2.5.68"
                   :exclusions [javax.transaction/jta
                                org.wso2.charon/org.wso2.charon.core
                                org.wso2.charon/org.wso2.charon.samples]]
                  [javax.transaction/jta "1.1"]
                  [honeysql "1.0.461"]
                  [korma "0.4.3"]
-                 [org.clojure/clojure "1.10.3"]
-                 [org.clojure/tools.logging "1.1.0"]
+                 [org.clojure/clojure "1.11.1"]
+                 [org.clojure/tools.logging "1.2.4"]
                  [org.cyverse/common-cli "2.8.1"]
-                 [org.cyverse/kameleon "3.0.6"]
-                 [postgresql "9.3-1102.jdbc41"]]
+                 [org.cyverse/kameleon "3.0.8"]]
   :main sharkbait.core
   :profiles {:eastwood {:resource-paths ["test-resources"]}
              :uberjar {:aot :all}})
